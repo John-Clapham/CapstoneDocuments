@@ -122,7 +122,7 @@ VCE = \frac{DC Output Voltage}{RF Peak Voltage} = \frac{V_{Out}}{V_{P}}\label{eq
 	\section{Analysis and Simulation}
 	
 	\subsection{Current Progress}
-	Simulations of a two stage Dickson charge pump with an input amplitude of 1V with a frequency of 1 kHz. The circuit was constructed using the PSpice program. Components were selected to best reflect the physical components available to build a prototype. Standard 1uF capacitors and BAT68 diodes were selected to emulate the standard capacitor values and Schottky diodes provided to build the circuit. Figure~\ref{fig:2SCP NSR} shows the layout of the designed charge pump. Time domain responses were plotted showing the voltage stepping up and the current. The results were recorded for 300 microseconds. Figures~\ref{fig:2SCP NSR} and~\ref{fig:2SCP NSR Out} on pages~\pageref{fig:2SCP NSR} and~\pageref{fig:2SCP NSR Out}  show the layout of the designed charge pump and the output voltage at the load resistor respectively.
+	Simulations of a two stage Dickson charge pump with an input amplitude of 1V with a frequency of 1kHz. The circuit was constructed using the PSpice program. Components were selected to best reflect the physical components available to build a prototype. Standard 1uF capacitors and BAT68 diodes were selected to emulate the standard capacitor values and Schottky diodes provided to build the circuit. Figure~\ref{fig:2SCP NSR} shows the layout of the designed charge pump. Time domain responses were plotted showing the voltage stepping up to a steady state. The results were recorded for 300 microseconds. Figures~\ref{fig:2SCP NSR} and~\ref{fig:2SCP NSR Out} on pages~\pageref{fig:2SCP NSR} and~\pageref{fig:2SCP NSR Out}  show the layout of the designed charge pump and the output voltage at the load resistor respectively.
 	
 \vspace{0.5em}
 \begin{figure}[H]
@@ -133,12 +133,42 @@ VCE = \frac{DC Output Voltage}{RF Peak Voltage} = \frac{V_{Out}}{V_{P}}\label{eq
 
 \vspace{0.5em}
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.5]{ProjectPropFigure/CPsim300us.png}}
-\caption{2-Stage Charge Pump Output Voltage}
+\centering{\includegraphics[scale=0.45]{ProjectPropFigure/CPsim300us.png}}
+\caption{2-Stage Charge Pump Output Voltage (No Source Resistance)}
 \label{fig:2SCP NSR Out}
 \end{figure}
 
-\noindent A 50 Ohm resistor was added as a source resistance to reflect the response of a practical circuit. The time domain responses of the voltage and current were taken of the circuit and compared to the response of the circuit without the source resistance.\\
+	\noindent Analysis of the Bat68 Diode turn on voltage was simulated in Pspice as well. A DC sweep has been performed with a step voltage of 1mV in order to compare the forward voltage listed on the data sheet. The simulation design is shown in Figure~\ref{fig:Bat68Analysis} on page~\pageref{fig:Bat68Analysis} with the output of the DC sweep shown in Figure~\ref{fig:Bat68Knee} on page~\pageref{fig:Bat68Knee}. The simulation results compare to the data sheet values of the Bat68's typical forward voltage of 318mV. These simulations are likely to be repeated to determine the diode with the lowest turn on voltage within a reasonable price range.
+
+\vspace{0.5em}
+\begin{figure}[H]
+\centering{\includegraphics[scale=0.7]{ProjectPropFigure/Bat68.png}}
+\caption{Bat68 Diode Analysis Setup}
+\label{fig:Bat68Analysis}
+\end{figure}
+
+\vspace{0.5em}
+\begin{figure}[H]
+\centering{\includegraphics[scale=0.45]{ProjectPropFigure/Bat68Knee.png}}
+\caption{Bat68 Diode Knee Voltage}
+\label{fig:Bat68Knee}
+\end{figure}
+
+\noindent A 50 Ohm resistor was added as a source resistance to reflect the response of a practical circuit~(see~Figure~\ref{fig:2SCP SR}). The time domain responses of the voltage was taken of the circuit and compared to the response of the circuit without the source resistance. The Simulation was run for 350 microseconds to account for the longer steady state rise time~(see~Figure~\ref{fig:2SCP SR Out}) compared to simulation shown in Figure~\ref{fig:2SCP NSR Out}.\\
+
+\vspace{0.5em}
+\begin{figure}[H]
+\centering{\includegraphics[scale=0.7]{ProjectPropFigure/CPWSR.png}}
+\caption{2-Stage Charge Pump (With Source Resistance)}
+\label{fig:2SCP SR}
+\end{figure}
+
+\vspace{0.5em}
+\begin{figure}[H]
+\centering{\includegraphics[scale=0.45]{ProjectPropFigure/CPsimWSR.png}}
+\caption{2-Stage Charge Pump Output Voltage (With Source Resistance)}
+\label{fig:2SCP SR Out}
+\end{figure}
 
 \noindent Physical circuits of the designs were constructed to measure the response in real time. In physical circuit tests ceramic capacitors and Schottky diodes 1N5817 were provided by the labs and used. The input signal was supplied by a function generator.
 
