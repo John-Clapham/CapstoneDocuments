@@ -74,32 +74,33 @@ Charge pumps have been originally designed for use at low frequencies, however, 
 	
 \noindent A sinusoidal signal will be input directly into the charge pump block from a signal generator. The signal will then be converted to a DC voltage and dumped into a load. The signal frequency that will be used will be less than 100kHz in order to perform analysis in the time domain with the hope of scaling up to RF. \\
 
-\noindent All RF-DC charge pumps use capacitors as storage elements in stages and many attempts to optimize the selection of components used for the charge pump have been made. Design criteria for selecting capacitor values, number of stages, and diodes in order to optimize the performance of the charge pump in the RF range is the goal of this project. Multiple papers exist documenting the progress that has been made in RF-DC devices. Further investigation is needed for improving the efficiency of power conversion, as well as possible circuit topologies, and device implementations. 
+\noindent All RF-DC charge pumps use capacitors as storage elements in stages and many attempts to optimize the selection of components used for the charge pump have been made. Design criteria for selecting capacitor values, number of stages, and diodes in order to optimize the performance of the charge pump in the RF range is the goal of this project. Multiple papers exist documenting the progress that has been made in RF-DC devices, however, further investigation is needed for improving the efficiency of power conversion, as well as possible circuit topologies, and device implementations. 
 	
 	\section{Review of Design}
 	The DC output of the Dickson charge pump is obtained by the capacitors cyclically charging and discharging depending on the state of the diodes. Several characteristics must be considered when designing a charge pump circuit. The Dickson charge pump will be initially simulated with arbitrarily chosen parameters such as number of stages and capacitor values. Due to the low turn on voltage of Schottky diodes, they are a necessary choice in passive charge pump designs. A Schottky diode will be chosen based off of a low threshold voltage. Other switches such as various transistors have been used, however, research suggests transistors are a better option for charge pump integrated circuit design. A variety of charge pump topologies will be explored. Various signal frequencies will be input to the system with different amplitudes to determine effects on output.
 
 	\section{Project Plan}
-	The purpose of this project is to research the affecting parameters of the charge pump and determine possible design criteria. The project will result in providing research for more effective topologies and components used to produce a steady state DC output. The three main stages of the project will include research, simulation, design, and implementation on a PCB. While the idea is to convert RF frequencies~(greater than 500MHz) to DC, experimentally we will use less than 1~kHz to analyze the circuit in the time domain through simulations and laboratory measurements. Then, testing of the design criteria will be scaled up to RF. The functional requirements for the project are listed below:\\
+	The purpose of this project is to research the affecting parameters of the charge pump and determine possible design criteria. The project will result in providing research for more effective topologies and components used to produce a steady state DC output. The four main stages of the project will include research, simulation, design, and implementation on a PCB. While the idea is to convert RF frequencies~(greater than 500MHz) to DC, experimentally less than 1~kHz will be used to analyze the circuit in the time domain through simulations and laboratory measurements. Then, testing of the design criteria will be scaled up to RF. The functional requirements for the project are listed below:\\
 	
 \noindent{Functional Requirements}
 \begin{itemize}
-	\item Convert RF energy to a maximized steady state DC energy
 	\item Explore different charge pump designs and switch components
 	\item Develop charge pump design criteria
+	\item Convert RF energy to a maximized steady state DC energy
 	\item Design and print circuit board for testing purposes
 \end{itemize}
 	
 	\subsection{Research}
-	Research papers exploring different energy harvesting devices that include block diagrams, functional designs, power efficiency equations, and suggested design criteria equations have been both provided and found. Within the research specifically, applied charge pump designs for energy harvesting applications as well as equations to evaluate the performance of design will be searched for.\\
+	Research papers exploring different energy harvesting devices that include block diagrams, functional designs, power efficiency equations, and suggested design criteria equations have been acquired. Research will be used to analyze various applications of the charge pump for energy harvesting systems as well as for equations to aid in the evaluation of the performance of design.\\
 	
 	\noindent Three notable research papers have been found:
 	\begin{itemize}
 	\item ``Applicability of Dickson Charge Pump in Energy Harvesting Systems: Experimental Validation of Energy Harvesting Charge Pump Model" \cite{Vinco}
-	\item ``Power Management in Wireless Power-Sipping Devices: A Survey” \cite{Guler}
 	\item ``E-WEHP: A Batteryless Embedded Sensor-Platform Wirelessly Powered From Ambient Digital-TV Signals" \cite{Vyas}
+	\item ``Power Management in Wireless Power-Sipping Devices: A Survey” \cite{Guler}
 	\end{itemize} 
 	\vspace{0.5em}
+
 	\noindent Although it has been noticed that these papers base charge pump models from the application of ideal diodes, these research papers will provide a basis for a clear understanding of the task at hand. It could be worth while to instead explore the use of practical diodes to develop charge pump design criteria. Other research papers that will prove useful to the development of the RF-DC charge pump have been listed in the \textit{Bibliography} section on page~\pageref{bibliography}.\\
 	
 	\noindent Two equations have been found as a possible evaluation of performance of the designed charge pump. Depending on the topology that is being constructed the components can change to increase the Power Conversion Efficiency~(PCE). PCE is the ratio of DC power delivered to the load, to the AC power delivered to the input. The voltage conversion efficiency (VCE) is the ratio between the peak voltage available at the input of the device and the DC voltage available at the output. The VCE and PCE equations that have been found are described as follows~\cite{Guler}:
@@ -140,9 +141,9 @@ C > \frac{N}{fF(N+1)^2R_{EH}}
 \end{equation}
 
 	\subsection{Design/Simulation}
-	Simulations of the charge pump will be done using ORCAD PSpice. The simulation process will start by performing analysis on various diodes in order to obtain an understanding of the threshold voltage. A low threshold voltage of  is required for efficient RF-DC conversion. Initial design will be based on the standard Dickson charge pump with 1uF capacitors and Schottky diodes. The input signal will start at 1kHz and the results will be gathered in the time domain.\\
+	Simulations of the charge pump will be done using ORCAD PSpice. The simulation process will start by performing analysis on various diodes in order to obtain an understanding of the threshold voltage. A low threshold voltage is required for efficient RF-DC conversion. Initial design will be based on the standard Dickson charge pump with 1uF capacitors and Schottky diodes. The input signal will start at 1kHz and the results will be gathered in the time domain.\\
 	
-	\noindent Analysis will being with the one stage charge pump. The response and various topologies will be created for analysis consisting of different numbers of stages, and different capacitor values. Stages will continue to be added until a five stage charge pump is created. The time domain response will be recorded from all designs, and then be compared. The most effective design with the best PCE and VCE values~(equations~\ref{eq:PCE}~and~\ref{eq:VCE} on page~\pageref{eq:PCE}) will be selected from the designs. After selecting the design the values of the capacitors will be varied. Simulations will be run in the time domain to analyze the effect of varying values. Next, different topologies will be explored to see if the design can be further improved. A high level block diagram of the system that will be used for evaulation has been shown in Figure~\ref{fig:HighLevel} on page~\pageref{fig:HighLevel}.\\
+	\noindent Analysis will begin with the one stage charge pump. The response and various topologies will be created for analysis consisting of different numbers of stages, and different capacitor values. Stages will continue to be added until a five stage charge pump is created. The time domain response will be recorded from all designs, and then be compared. The most effective design with the best PCE and VCE values~(equations~\ref{eq:PCE}~and~\ref{eq:VCE} on page~\pageref{eq:PCE}) will be selected from the designs. After selecting the design the values of the capacitors will be varied. Simulations will be run in the time domain to analyze the effect of varying values. Next, different topologies will be explored to see if the design can be further improved. A high level block diagram of the system that will be used for evaulation has been shown in Figure~\ref{fig:HighLevel} on page~\pageref{fig:HighLevel}.\\
 
 \noindent The high level block diagram shows the overarching system of that will be used. Only the charge pump, a sinusoidal input, and a load are necessary to represent the system. The underlying charge pump block can be varied through different suggested topologies. Figure~\ref{fig:DicksonCP}  on page~\pageref{fig:DicksonCP} shows the circuit topology that will be used for a majority of the simulation and design stages. The simulation and design stages will continue hand-in-hand throughout the length of the project.
 
@@ -154,7 +155,7 @@ C > \frac{N}{fF(N+1)^2R_{EH}}
 	The analysis and simulation that has been completed is described in the following sections. Further investigation into optimal design is necessary and will be continued throughout the project.
 	
 	\subsection{Diode Analysis}
-Analysis of the Bat68 Diode voltage VS current simulation was completed to find the threshold voltage. A DC sweep has been performed with a step voltage of 1mV in order to compare the threshold voltage listed on the data sheet. The simulation design is shown in Figure~\ref{fig:Bat68} with the output of the DC sweep shown in Figure~\ref{fig:Bat68sim}. The simulation results compare to the data sheet values of the Bat68's typical threshold voltage of 318mV. These simulations are likely to be repeated to determine the diode with the lowest turn on voltage within a reasonable price range.
+Analysis of the Bat68 diode voltage VS current simulation was completed to find the threshold voltage. A DC sweep has been performed with a step voltage of 1mV in order to compare the threshold voltage listed on the data sheet. The simulation design is shown in Figure~\ref{fig:Bat68} with the output of the DC sweep shown in Figure~\ref{fig:Bat68sim}. The simulation results compare to the data sheet values of the Bat68's typical threshold voltage of 318mV. These simulations are likely to be repeated to determine the diode with the lowest turn on voltage within a reasonable price range.
 
 \begin{figure}[H]
 \centering{\includegraphics[scale=0.7]{ProjectPropFigure/Bat68.png}}
@@ -236,7 +237,7 @@ The steady state DC voltage level in the load capacitor (shown in blue) that is 
 
 \begin{figure}[H]
 \centering{\includegraphics[scale=0.6]{ProjectPropFigure/2stageCPLab_1kHz_500mV.png}}
-\caption{2-Stage Charge Pump Output Lab Output}
+\caption{2-Stage Charge Pump Lab Output}
 \label{fig:2SCPLabOut2}
 \end{figure}
 
